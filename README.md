@@ -49,3 +49,14 @@ MessageHub is a simple CRUD web application built using the MEN stack (MongoDB, 
  ├── package-lock.json 
  └── README.md 
   </pre>
+
+
+## Packages
+
+1.Install packages:
+   ```bash
+    npm i express
+    npm i method-override
+    npm i mongoose
+    npm i ejs
+   ```
