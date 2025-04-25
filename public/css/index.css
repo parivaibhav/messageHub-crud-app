@@ -1,0 +1,105 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #ece5dd;
+  margin: 0;
+  padding: 0;
+}
+
+.chat-container {
+  max-width: 600px;
+  margin: 20px 30px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  padding: 20px;
+  display: inline-block;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #075e54;
+  color: #ffffff;
+  padding: 10px 15px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.message {
+  margin-bottom: 10px;
+  max-width: 100%;
+  background-color: #5bdacb;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border-bottom-left-radius: 10%;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+button {
+  background-color: #075e54;
+  color: #ffffff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.chat-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.sm-btn {
+  background-color: #075e54;
+  color: #ffffff;
+  border: none;
+
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+.del-btn {
+  background-color: #f44336;
+  color: #ffffff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-left: 5px;
+  width: 100%;
+}
+
+.chat-container:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+.chat-container:active {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.new-chat-btn {
+  background-color: #03352f;
+  color: #ffffff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+.new-chat-btn:hover {
+  background-color: #05463f;
+}

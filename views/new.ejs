@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Chats Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        h3 {
+            color: #333;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: #075e54;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="text"]:focus,
+        textarea:focus {
+            border: 2px solid #075e54;
+        
+            outline: none;
+        }
+        button:hover {
+            background-color: #0b554d;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h3>Write a New Chat</h3>
+    <form action="/chats" method="post" class="new-chat-form">
+        <label for="from">From:</label>
+        <input type="text" id="from" name="from" required ><br><br>
+
+        <label for="to">To:</label>
+        <input type="text" id="to" name="to" required><br><br>
+
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message" rows="4" cols="50" required></textarea><br><br>
+
+        <button type="submit">Send</button>
+        <button type="button" onclick="window.location.href='http://localhost:8080/chats'">Back to Chats</button>
+    </form>
+</body>
+
+</html>

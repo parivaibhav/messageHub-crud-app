@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Chats</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7D4pr2IK8RZC7EKlwZr2P8Uknw9+4l2eEr" crossorigin="anonymous">
+</head>
+
+<body>
+
+
+    <div class="chat-header">
+        <h2>MessageHub</h2>
+        <form action="http://localhost:8080/chats/new" method="GET" class="new-chat-form">
+            <button class="new-chat-btn">New Chat</button>
+        </form>
+    </div>
+
+    <% if (chats.length===0) { %>
+        <h3 style="text-align: center; margin-top: 30vh; font-weight:400; width:100%;">No chats found.</h3>
+        <% } %>
+            <% chats.forEach(chat=> { %>
+                <div class="chat-container"><strong>
+                        From: <%= chat.from %>
+                            <br>
+                            To: <%= chat.to %>
+                    </strong>
+                    <p class="message">
+                        <%= chat.message %>
+                    </p>
+                    <span style="font-size: 0.8em; color: #888;">(Sent at <%= chat.created_at.toLocaleString() %>
+                            )</span>
+                    <div class="chat-actions">
+                        <form action="http://localhost:8080/chats/<%= chat._id %>?_method=DELETE" method="POST"
+                            class="delete-chat-form">
+                            <button type="submit" class="sm-btn del-btn">Delete</button>
+                        </form>
+                        <form action="http://localhost:8080/chats/<%= chat._id %>/edit" method="GET"
+                            class="edit-chat-form">
+                            <button type="submit">Edit</button>
+                        </form>
+                    </div>
+                </div>
+                <% }); %>
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+                    <script>
+                        document.querySelectorAll('.delete-chat-form').forEach(form => {
+                            form.addEventListener('submit', function (event) {
+                                const confirmDelete = confirm('Are you sure you want to delete this chat?');
+                                if (!confirmDelete) {
+                                    event.preventDefault();
+                                }
+                            });
+                        });
+                    </script>
+</body>
+
+</html>

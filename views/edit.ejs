@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Chat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: #075e54;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+
+        textarea:focus {
+            border: 2px solid #075e54;
+            outline: none;
+        }
+
+        button:hover {
+            background-color: #064d43;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+     
+    </style>
+</head>
+
+<body>
+    <h1>Edit Chat</h1>
+    <form action="http://localhost:8080/chats/<%= chat._id %>?_method=PUT" method="POST" class="edit-chat-form">
+
+        <label for="from">from</label>
+        <input type="text" id="from" name="from" value="<%= chat.from %>" readonly>
+        <label for="to">to</label>
+        <input type="text" id="to" name="to" value="<%= chat.to %>" readonly>
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="4" cols="50"><%= chat.message %></textarea>
+        <button type="submit">Update</button>
+        <a href="http://localhost:8080/chats" class="cancel-btn">Cancel</a>
+    </form>
+
+    <script>
+        const form = document.querySelector('.edit-chat-form');
+        const messageInput = document.querySelector('#message');
+        const originalMessage = "<%= chat.message %>";
+
+        let alertBox = document.createElement("div");
+        alertBox.style.position = "fixed";
+        alertBox.style.top = "20px";
+        alertBox.style.right = "20px";
+        alertBox.style.backgroundColor = "#f44336";
+        alertBox.style.color = "white";
+        alertBox.style.padding = "15px";
+        alertBox.style.borderRadius = "5px";
+        alertBox.style.zIndex = "1000";
+        alertBox.style.display = "none";
+        alertBox.innerText = "No changes. Please update message before submitting.";
+
+        form.addEventListener('submit', (event) => {
+            if (messageInput.value === originalMessage) {
+                event.preventDefault();
+                alertBox.style.display = "block";
+                document.body.appendChild(alertBox);
+                setTimeout(() => {
+                    alertBox.style.display = "none";
+                    alertBox.style.translatetion = "translateY(-20px)";
+                    alertBox.style.opacity = "1";
+                    alertBox.style.transition = "translateY(-20px) 0.5s ease-in-out";
+                    alertBox.style.opacity = "0";
+                    setTimeout(() => {
+                        document.body.removeChild(alertBox);
+                    }, 500);
+                }, 2000);
+            } else {
+                alertBox.style.display = "none";
+            }
+        });
+    </script>
+</body>
+
+</html>
